@@ -6,11 +6,11 @@ create table students (
     phone varchar(15),
     gender enum('Male', 'Female');
     teacher_id INT,
-    FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id);
+    FOREIGN KEY (teacher_id) REFERENCES teacher(teacher_id)
 );
 
 CREATE TABLE teacher (
-    teacher_idid INT PRIMARY KEY,
+    teacher_id INT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
-    subject VARCHAR(50)
+    password varchar(20)
 );
