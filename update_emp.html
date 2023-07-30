@@ -13,7 +13,23 @@
   </head>
   <body>
 
-    {%  include 'navbar.html' %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <a class="navbar-brand" href="/employeedata/index.html">Emp Management</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/employeedata/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/employeedata/add_emp.html">Add Employee</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
     <div class="text-center ">
         <h1 style="margin: 2% auto 2%;">Update Employee</h1>

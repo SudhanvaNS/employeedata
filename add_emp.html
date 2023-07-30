@@ -14,22 +14,22 @@
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-        <a class="navbar-brand" href="/home/">Emp Management</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/home/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/add_emp/">Add Employee</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <a class="navbar-brand" href="/employeedata/index.html">Emp Management</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/employeedata/index.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/employeedata/add_emp.html">Add Employee</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
     <div class="text-center ">
         <h1 style="margin: 2% auto 2%;">Add New Employee</h1>
@@ -40,7 +40,7 @@
             <div class="col-md-8 offset-md-2">
                 <div class="card bg-dark text-white">
                     <div class="card-body">
-                        <form action="/add_emp/" method="POST">
+                        <form action="" method="POST">
                             <div class="form-group">
                               <label for="name">Employee Name</label>
                               <input id="name" name="emp_name" type="text" class="form-control" placeholder="Enter Name">

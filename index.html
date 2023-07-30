@@ -12,7 +12,24 @@
   </head>
   <body>
 
-    {%  include 'navbar.html' %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+      <a class="navbar-brand" href="/employeedata/index.html">Emp Management</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/employeedata/index.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/employeedata/add_emp.html">Add Employee</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
     <h1 style="margin: 2% auto 2%;" class="text-center">Employee Management</h1>
     <h2 class="text-center">List of Employees</h2>
     <div class="container">
@@ -34,7 +51,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {%  for e in emps %}
+                  <!-- {%  for e in emps %}
                   <tr>
                      <td>{{forloop.counter}}</td>
                      <td>{{e.name}}</td>
@@ -48,11 +65,11 @@
                       <a href="/update-emp/{{e.id}}" class="btn btn-dark btn-sm">Update</a>
                      </td>
                   </tr>
-                  {% endfor %}
+                  {% endfor %} -->
                   <tr>
                     <td colspan="8">
                       <div class="text-center">
-                        <a href="/add_emp/" style="margin-top: 3%" class="btn btn-warning">Add Employee</a>
+                        <a href="/employeedata/add_emp.html" style="margin-top: 3%" class="btn btn-warning">Add Employee</a>
                       </div>
                     </td>
                   </tr>
