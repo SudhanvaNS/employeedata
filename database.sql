@@ -13,4 +13,8 @@ CREATE TABLE teacher (
     teacher_id INT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     password varchar(20)
+<<<<<<<<< Temporary merge branch 1
 );
+=========
+);
+>>>>>>>>> Temporary merge branch 2
