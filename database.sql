@@ -5,5 +5,6 @@ create table emp_data (
     name varchar(100) not null,
     phone varchar(15),
     address varchar(100),
+    working bool not null default false,
     departments varchar(100)
 );
