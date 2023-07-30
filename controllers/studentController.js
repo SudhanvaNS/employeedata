@@ -4,7 +4,6 @@ import { pool } from "../utils/connectDb.js";
 export const createstudent = async (req, res) => {
   try {
     const { usn , name , phone, gender} = req.body;
-    console.log(usn);
     const { teacher_id }=req.params;
     if ( !usn || !name || !phone|| !gender) {
       return res
@@ -25,7 +24,7 @@ export const createstudent = async (req, res) => {
 // Retrieve all employee jobs
   
     export const getAllstudent = async (req, res) => {
-      const query = "SELECT * FROM employee_jobs";
+      const query = "SELECT * FROM students";
    
       pool.query(query,(error,results,fields)=>{
         if(error)
@@ -42,28 +41,28 @@ export const createstudent = async (req, res) => {
 // Update an employee job
 export const updatestudent = async (req, res) => {
   try {
-    const {employee_role, employee_login, employee_logout } = req.body;
-    const {employee_id} = req.params;
+    const {teacher_id } = req.body;
+    const {usn} = req.params;
 
     const query =
-      "UPDATE employee_jobs SET employee_role = ? WHERE employee_id = ? AND employee_login = ? AND employee_logout = ?";
-    await pool.query(query, [employee_role, employee_id, employee_login, employee_logout]);
+      "UPDATE students SET teacher_id = ? WHERE usn = ?";
+    await pool.query(query, [teacher_id,usn]);
 
-    return res.status(200).json({ message: "Employee job updated successfully" });
+    return res.status(200).json({ message: "student information updated successfully" });
   } catch (error) {
-    console.error("Error updating employee job:", error);
-    return res.status(500).json({ error: "Failed to update employee job" });
+    console.error("Error updating student information:", error);
+    return res.status(500).json({ error: "Failed to update student information" });
   }
 };
 
 // Delete an employee job
 export const deletestudent = async (req, res) => {
-  const { employee_id } = req.params;
-  console.log( employee_id );
+  const { usn } = req.params;
+  
 
   try {
-      const deleteQuery = "DELETE FROM employee_jobs WHERE employee_id = ?";
-      const result = await pool.query(deleteQuery, [ employee_id ]);
+      const deleteQuery = "DELETE FROM students WHERE usn = ?";
+      const result = await pool.query(deleteQuery, [ usn ]);
       // Log the result object to see if there are any messages or details from the database.
 
       if (result.rowCount === 0) {

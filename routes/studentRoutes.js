@@ -16,9 +16,9 @@ router.get("/getall", getAllstudent);
 
 
 // Update a cloth color by color_id
-router.put("/:usn", updatestudent);
+router.put("/put/:usn", updatestudent);
 
 // Delete a cloth color by color_id
-router.delete("/:usn", deletestudent);
+router.delete("/delete/:usn", deletestudent);
 
 export default router;
