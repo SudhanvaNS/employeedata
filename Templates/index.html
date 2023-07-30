@@ -13,7 +13,7 @@
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-      <a class="navbar-brand" href="/employeedata/index.html">Emp Management</a>
+      <a class="navbar-brand" href="/employeedata/index.html"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -40,13 +40,10 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th>SL NO</th>
+                    <th>USN</th>
                     <th>NAME</th>
-                    <th>EMP ID</th>
                     <th>PHONE</th>
-                    <th>ADDRESS</th>
-                    <th>WORKING</th>
-                    <th>DEPARTMENT</th>
+                    <th>GENDER</th>
                     <th>ACTION</th>
                   </tr>
                 </thead>
@@ -55,11 +52,8 @@
                   <tr>
                      <td>{{forloop.counter}}</td>
                      <td>{{e.name}}</td>
-                     <td>{{e.emp_id}}</td>
                      <td>{{e.phone}}</td>
                      <td>{{e.address}}</td>
-                     <td>{{e.working}}</td>
-                     <td>{{e.department}}</td>
                      <td>
                       <a href="/delete-emp/{{e.id}}" class="btn btn-danger btn-sm">Delete</a>
                       <a href="/update-emp/{{e.id}}" class="btn btn-dark btn-sm">Update</a>
