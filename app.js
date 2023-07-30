@@ -1,9 +1,14 @@
-const express=require("express");
+import express from "express";
+import cors from "cors";
+import studentRoutes from "./routes/studentRoutes.js";
+import teacherRoutes from "./routes/teacherRoutes.js";
+import bodyParser from "body-parser";
 const app=express();
+app.use(express.json());
+app.use(cors());
+app.use("/api/student" ,studentRoutes);
+app.use("/api/teacher",teacherRoutes);
 const port=3000;
-app.get("/",(req,res) => {
-    res.send("hello world");
-})
 app.listen(port, ()=>{
-    console.log("listening on port 3000");
+    console.log(`listening on port http://localhost:${port}`);
 })
