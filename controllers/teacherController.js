@@ -54,6 +54,29 @@ export const updateteacher = async (req, res) => {
   }
 };
 
+// Authenticate a teacher
+export const authenticateTeacher = async (req, res) => {
+  const { teacher_id, password } = req.body;
+
+  try {
+    // Query the database for the teacher with the given ID and password
+    const query = "SELECT * FROM teacher WHERE teacher_id = ? AND password = ?";
+    const result = await pool.query(query, [teacher_id, password]);
+
+    if (result.length === 0) {
+      // Teacher with the provided ID and password not found
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    // Teacher found with matching ID and password, authentication successful
+    return res.status(200).json({ message: "Authentication successful" });
+  } catch (error) {
+    console.error("Error during authentication:", error);
+    return res.status(500).json({ error: "Failed to authenticate" });
+  }
+};
+
+
 // Delete an employee job
 export const deleteteacher = async (req, res) => {
   const { teacher_id } = req.params;

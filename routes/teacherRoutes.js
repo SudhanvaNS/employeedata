@@ -5,9 +5,15 @@ import {
     getAllteacher,
     updateteacher,
     deleteteacher,
+    authenticateTeacher
 } from "../controllers/teacherController.js";
 
+
 const router = express.Router();
+
+// Authenticate a teacher (login)
+router.post("/login", authenticateTeacher);
+
 
 // Create a new cloth color
 router.post("/", createteacher);
