@@ -3,9 +3,9 @@ import { pool } from "../utils/connectDb.js";
 // Create a new employee job
 export const createstudent = async (req, res) => {
   try {
-    const { usn , name , phone, gender} = req.body;
-    const { teacher_id }=req.params;
-    if ( !usn || !name || !phone|| !gender) {
+    const { usn , name , phone, gender,teacher_id} = req.body;
+    // console.log(usn);
+    if ( !usn || !name || !phone|| !gender|| !teacher_id) {
       return res
         .status(400)
         .json({ error: "please give all the information" });
@@ -30,7 +30,7 @@ export const createstudent = async (req, res) => {
         if(error)
         {console.error("error: ",error);}
         else{
-          console.log("RESULTS",results);
+          // console.log("RESULTS",results);
               return res.status(200).json(results);
   
         }

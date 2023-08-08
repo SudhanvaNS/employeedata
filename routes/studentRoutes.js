@@ -9,7 +9,7 @@ import {
 const router = express.Router();
 
 // Create a new cloth color
-router.post("/:teacher_id", createstudent);
+router.post("/", createstudent);
 
 
 router.get("/getall", getAllstudent);

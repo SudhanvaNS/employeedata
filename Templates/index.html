@@ -1,104 +1,52 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="style.css">
-
-    <title>Emp Management</title>
-  </head>
-  <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-      <a class="navbar-brand" href="/employeedata/Templates/index.html">HI Teacher ame</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
     
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/employeedata/Templates/teach_details.html">Profile <span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/employeedata/Templates/login.html">Logout</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    
+    <title>Register</title>
+</head>
+<body>
 
-    <h1 style="margin: 2% auto 2%;" class="text-center">Students List</h1>
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
-            <div class="card-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>USN</th>
-                    <th>NAME</th>
-                    <th>PHONE</th>
-                    <th>GENDER</th>
-                    <th>ACTION</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                     <!-- brig data from database -->
-                  </tr>
-                  <tr>
-                    <td colspan="8">
-                      <div class="text-center">
-                        <a href="add_stu.html" style="margin-top: 3%" class="btn btn-warning">Add Student</a>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="register-container">
+                    <h2>Teacher Register</h2>
+                    <form action="/employeedata/Templates/login.html">
+                        <div class="mb-3">
+                            <label for="registerId">Teacher ID</label>
+                            <input type="text" class="form-control" id="Id" name="Id" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerUsername">Teacher Name</label>
+                            <input type="text" class="form-control" id="Name" name="Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword">Password</label>
+                            <input type="password" class="form-control" id="registerPassword" name="registerPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                    <p class="text-muted">Already have an account? <a href="/employeedata/Templates/login.html" class="login-link">Login</a></p>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
 
     <!-- Optional JavaScript -->
-    <script>
-      // JavaScript code to fetch data from the API and populate the table
-      document.addEventListener('DOMContentLoaded', function () {
-        const apiUrl = 'YOUR_API_ENDPOINT'; // Replace with the actual API endpoint URL
-  
-        fetch(apiUrl)
-          .then(response => response.json())
-          .then(data => {
-            const tableBody = document.querySelector('tbody');
-            data.forEach(student => {
-              const row = document.createElement('tr');
-              row.innerHTML = `
-                <td>${student.usn}</td>
-                <td>${student.name}</td>
-                <td>${student.phone}</td>
-                <td>${student.gender}</td>
-                <td><button class="btn btn-primary">Edit</button></td>
-              `;
-              tableBody.appendChild(row);
-            });
-          })
-          .catch(error => console.error('Error fetching data:', error));
-      });
-    </script>
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+    <!-- Bootstrap Bundle with Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
