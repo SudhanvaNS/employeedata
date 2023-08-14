@@ -73,3 +73,12 @@ body {
     color: #ffc107;
     text-decoration: none;
 }
+/* styles.css */
+.custom-message {
+    /* Add your custom CSS styles here */
+    /* Example styles: */
+    background-color: #ff5555; /* Red background */
+    color: white; /* White text */
+    padding: 10px;
+    border-radius: 5px;
+}

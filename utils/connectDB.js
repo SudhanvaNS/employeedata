@@ -1,5 +1,5 @@
-import mysql from "mysql";
-export const pool = mysql.createPool({
+const mysql= require ("mysql");
+exports.pool = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "root123",

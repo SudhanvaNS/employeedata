@@ -1,4 +1,4 @@
-import { pool } from "../utils/connectDb.js";
+// import { pool } from "../utils/connectDb.js";
 
 // Create a new employee job
 export const createstudent = async (req, res) => {

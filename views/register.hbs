@@ -19,34 +19,39 @@
             <div class="col-md-6 offset-md-3">
                 <div class="register-container">
                     <h2>Teacher Register</h2>
-                    <form action="/contollers/teacherController" method="post">
+                    <form action="/teacher/register" method="POST">
                         <div class="mb-3">
                             <label for="registerId">Teacher ID</label>
-                            <input type="text" class="form-control" id="Id" name="Id" required>
+                            <input type="text" class="form-control" id="Id" name="teacher_id" required>
                         </div>
                         <div class="mb-3">
                             <label for="registerUsername">Teacher Name</label>
-                            <input type="text" class="form-control" id="Name" name="Name" required>
+                            <input type="text" class="form-control" id="Name" name="name" required>
                         </div>
                         <div class="mb-3">
                             <label for="registerPassword">Password</label>
-                            <input type="password" class="form-control" id="registerPassword" name="registerPassword" required>
+                            <input type="password" class="form-control" id="registerPassword" name="password" required>
                         </div>
                         <div class="mb-3">
                             <label for="confirmPassword">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmpassword" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Register</button>
                     </form>
                     <p class="text-muted">Already have an account? <a href="/employeedata/Templates/login.html" class="login-link">Login</a></p>
                 </div>
             </div>
+                {{#if message}}
+                    <h4 class="alert alert-danger mt-4">{{message}}</h4>
+                {{/if}}
+
         </div>
     </div>
-
+   
     <!-- Optional JavaScript -->
     <!-- Bootstrap Bundle with Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

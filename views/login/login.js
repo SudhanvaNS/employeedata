@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   loginForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-
+   
     const username = document.getElementById("loginUsername").value;
     const password = document.getElementById("loginPassword").value;
 
     try {
-      const response = await fetch("/api/teacher/login", {
+      const response = await fetch("/teacher/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

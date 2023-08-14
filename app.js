@@ -16,8 +16,10 @@ app.use(express.static(publicDirectory, {
       res.setHeader('Content-Type', mimeType);
     }
   }));
-app.use('/',require('./routes/pages'))
+app.use(express.urlencoded({extended:false}));
+  app.use('/',require('./routes/pages'))
 // app.use("/api/student" ,require('./routes/studentRoutes'));
+
 app.use("/teacher",require('./routes/teacherRoutes'));
 const port=3000;
 app.listen(port, ()=>{
