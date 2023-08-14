@@ -1,5 +1,9 @@
 const { pool } = require("../utils/connectDb.js");
 const mysql=require("mysql");
+const jwt= require("jsonwebtoken");
+const bcrypt =require("bcryptjs"); 
+const passport = require("passport");
+const localStratergy=require("passport-local").Strategy;
 // Create a new employee job
 exports.createteacher = async (req, res) => {
   try {
@@ -23,31 +27,38 @@ exports.createteacher = async (req, res) => {
           })
         }
      });
-  } catch (error) {
+     let handlePassword = await bcrypt.hash(password,8)
+      console.log(handlePassword);
+     pool.query('INSERT into teacher SET ?', {teacher_id: teacher_id , name : name , password : handlePassword},(error,results)=>{
+      if(error){
+        console.log(error);
+      }else{
+        return res.render("login" ,{
+        message : "teacher registered successfully"
+        })
+      }
+     })
+    } catch (error) {
     console.error("Error adding teacher:", error);
     return res.status(500).json({ error: "Failed to add teacher" });
   }
 };
 // Authenticate a teacher
-exports.authenticateTeacher = async (req, res) => {
-  const { teacher_id, password } = req.body;
-  if(!teacher_id || !password)
-    throw new Error("Enter all the details needed");
-  
-  try {
-    // Query the database for the teacher with the given ID and password
-    const q = "SELECT teacher_id FROM teacher WHERE teacher_id = ?";
-    pool.query(q, [teacher_id],(error, results, fields) => {
-      if (error) {
-          console.error("authentication unsuccessful:", error);
-          return res.status(500).json({ error: "authentication unsuccessful" });
-      } else {
-          console.log("RESULTS", results);
-          return res.status(200).json(results);
+
+exports.authenticateTeacher = async (teacher_id, password,done ) => {
+    const user=getUserByEmail(teacher_id)
+    if(user==null){
+      return done(null,false,{message:"No Teacher Found"})
+    }
+    try{
+      if( await bcypt.compare(password,user.password)){
+        return done(null,user)
       }
-  });
-} catch (error) {
-  console.error("Error retrieving departments:", error);
-  return res.status(500).json({ error: "Failed to retrieve departments." });
-}
+    }catch(e){
+      console.log(e);
+      return done(e);
+    }
+    passport.use(new localStratergy({usernameField:'teacher_id'}))
+    passport.serializeUser((user,done)=>{})
+    passport.serializeUser((id,done)=>{})
 };

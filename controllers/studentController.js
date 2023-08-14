@@ -1,5 +1,4 @@
-// import { pool } from "../utils/connectDb.js";
-
+const { pool } =require("../utils/connectDb.js");
 // Create a new employee job
 export const createstudent = async (req, res) => {
   try {
@@ -24,7 +23,8 @@ export const createstudent = async (req, res) => {
 // Retrieve all employee jobs
   
     export const getAllstudent = async (req, res) => {
-      const query = "SELECT * FROM students";
+      const teacher_id=req.params;
+      const query = "SELECT * FROM students where teacher_id = ?";
    
       pool.query(query,(error,results,fields)=>{
         if(error)

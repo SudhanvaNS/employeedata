@@ -7,13 +7,22 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  
     <link rel="stylesheet" type="text/css" href="/login.css">
     
     <title>Register</title>
 </head>
 <body>
 
+    <nav>
+        <h4>Unix Project</h4>
+        <ul>    
+            <li><a href="/">Home</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href ="/register">Register</a></li>
+        </ul>
+    </nav>
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -23,7 +32,7 @@
                         <div class="mb-3">
                             <label for="registerId">Teacher ID</label>
                             <input type="text" class="form-control" id="Id" name="teacher_id" required>
-                        </div>
+                        </div> 
                         <div class="mb-3">
                             <label for="registerUsername">Teacher Name</label>
                             <input type="text" class="form-control" id="Name" name="name" required>
@@ -38,13 +47,12 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Register</button>
                     </form>
-                    <p class="text-muted">Already have an account? <a href="/employeedata/Templates/login.html" class="login-link">Login</a></p>
-                </div>
-            </div>
-                {{#if message}}
+                    <p class="text-muted">Already have an account? <a href="/login" class="login-link">Login</a></p>
+                 {{#if message}}
                     <h4 class="alert alert-danger mt-4">{{message}}</h4>
                 {{/if}}
-
+                </div>
+            </div>
         </div>
     </div>
    
