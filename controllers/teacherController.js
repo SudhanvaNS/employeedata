@@ -1,9 +1,16 @@
 const { pool } = require("../utils/connectDb.js");
 const mysql=require("mysql");
 const jwt= require("jsonwebtoken");
-const bcrypt =require("bcryptjs"); 
-const passport = require("passport");
-const localStratergy=require("passport-local").Strategy;
+const bcrypt =require("bcryptjs");
+const uuid = require('uuid'); 
+
+const JWT_SECRET = "pranesha";
+//supporting functions
+const generateTokenAuth = (id) => {
+  return jwt.sign({ id }, JWT_SECRET, {
+    expiresIn: "30d",
+  });
+};
 // Create a new employee job
 exports.createteacher = async (req, res) => {
   try {
@@ -44,21 +51,40 @@ exports.createteacher = async (req, res) => {
   }
 };
 // Authenticate a teacher
-
-exports.authenticateTeacher = async (teacher_id, password,done ) => {
-    const user=getUserByEmail(teacher_id)
-    if(user==null){
-      return done(null,false,{message:"No Teacher Found"})
-    }
-    try{
-      if( await bcypt.compare(password,user.password)){
-        return done(null,user)
+exports.authenticateTeacher= async(req,res) => {
+  if (!req.body.teacher_id || !req.body.password)
+    throw new Error("Enter all the details needed");
+  const {teacher_id,password}=req.body;
+  const querry='SELECT * from teacher where teacher_id= ?';
+  pool.getConnection(function (err, db) {
+    if (err) return res.json(err);
+    db.query(querry, [teacher_id], (err, data) => {
+      if (err) {
+        return res.json({ err });
       }
-    }catch(e){
-      console.log(e);
-      return done(e);
-    }
-    passport.use(new localStratergy({usernameField:'teacher_id'}))
-    passport.serializeUser((user,done)=>{})
-    passport.serializeUser((id,done)=>{})
-};
+      const teacher_password = req.body.password;
+      if (data.length === 0) {
+        db.release();
+        return res
+          .status(404)
+          .json("Email hasn't register Please register first");
+      }
+      // compare password
+      if (teacher_password) {
+        const isPasswordCorrect = bcrypt.compareSync(
+          teacher_password,
+          data[0].password
+        ); // true;
+
+        if (!isPasswordCorrect) {
+          db.release();
+          return res.status(404).json("Either Password or phone is wrong");
+        }
+        return res.status(201).json({
+          message:"login successful"
+        });
+      }
+    });
+  });
+}
+  
