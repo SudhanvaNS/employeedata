@@ -67,7 +67,7 @@ exports.authenticateTeacher= async(req,res) => {
         db.release();
         return res
           .status(404)
-          .json("Email hasn't register Please register first");
+          .json({error:'Email hasnt register Please register first'});
       }
       // compare password
       if (teacher_password) {
@@ -78,11 +78,11 @@ exports.authenticateTeacher= async(req,res) => {
 
         if (!isPasswordCorrect) {
           db.release();
-          return res.status(404).json("Either Password or phone is wrong");
+          return res.status(404).json({ error:"Password is wrong"}  );
         }
-        return res.status(201).json({
-          message:"login successful"
-        });
+        const token=generateTokenAuth(teacher_id);
+        res.cookie('jwt',token,{ httpOnly:true,maxAge:1000*60*60*24*3});
+        return res.status(201).json({user : teacher_id });
       }
     });
   });

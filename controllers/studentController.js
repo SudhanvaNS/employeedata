@@ -1,6 +1,6 @@
 const { pool } =require("../utils/connectDb.js");
 // Create a new employee job
-export const createstudent = async (req, res) => {
+exports.createstudent = async (req, res) => {
   try {
     const { usn , name , phone, gender,teacher_id} = req.body;
     // console.log(usn);
@@ -22,15 +22,16 @@ export const createstudent = async (req, res) => {
 
 // Retrieve all employee jobs
   
-    export const getAllstudent = async (req, res) => {
-      const teacher_id=req.params;
+    exports.getAllstudent = async (req, res) => {
+      const {teacher_id}=req.params;
+      console.log(req.params);
       const query = "SELECT * FROM students where teacher_id = ?";
    
-      pool.query(query,(error,results,fields)=>{
+      pool.query(query,[teacher_id],(error,results,fields)=>{
         if(error)
         {console.error("error: ",error);}
         else{
-          // console.log("RESULTS",results);
+          console.log("RESULTS: ",results);
               return res.status(200).json(results);
   
         }
@@ -39,7 +40,7 @@ export const createstudent = async (req, res) => {
     };
 
 // Update an employee job
-export const updatestudent = async (req, res) => {
+exports.updatestudent = async (req, res) => {
   try {
     const {teacher_id } = req.body;
     const {usn} = req.params;
@@ -56,10 +57,8 @@ export const updatestudent = async (req, res) => {
 };
 
 // Delete an employee job
-export const deletestudent = async (req, res) => {
+exports.deletestudent = async (req, res) => {
   const { usn } = req.params;
-  
-
   try {
       const deleteQuery = "DELETE FROM students WHERE usn = ?";
       const result = await pool.query(deleteQuery, [ usn ]);

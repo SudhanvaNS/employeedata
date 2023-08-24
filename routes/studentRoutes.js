@@ -1,10 +1,10 @@
-import express from "express";
-import {
+const express =require ("express");
+const {
     createstudent,
     getAllstudent,
     updatestudent,
     deletestudent,
-} from "../controllers/studentController.js";
+}= require ("../controllers/studentController.js");
 
 const router = express.Router();
 
@@ -12,7 +12,7 @@ const router = express.Router();
 router.post("/", createstudent);
 
 
-router.get("/getall", getAllstudent);
+router.get("/getall/:teacher_id", getAllstudent);
 
 
 // Update a cloth color by color_id
@@ -21,4 +21,4 @@ router.put("/put/:usn", updatestudent);
 // Delete a cloth color by color_id
 router.delete("/delete/:usn", deletestudent);
 
-export default router;
+module.exports=router;
