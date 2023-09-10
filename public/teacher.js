@@ -112,10 +112,10 @@ function handleEditRow(usn) {
 
     btn.addEventListener("click", (event) => {
         event.preventDefault(); 
-        const teacher_id = document.querySelector("#update-description").value;
+        const teacher_id = document.querySelector("#update-student-teacher").value;
      
         updateClothSize(usn, teacher_id);
-        document.querySelector("#update-description").value = "";
+        document.querySelector("#update-student-teacher").value = "";
     });
 }
 

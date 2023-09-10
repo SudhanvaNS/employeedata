@@ -66,13 +66,13 @@ exports.deletestudent = async (req, res) => {
 
       if (result.rowCount === 0) {
           // If no rows were affected by the DELETE operation, it means the color_id was not found in the database.
-          return res.status(404).json({ error: " employee not found." });
+          return res.status(404).json({ error: " student not found." });
       }
 
-      return res.status(200).json({ message: " employee_job deleted successfully." });
+      return res.status(200).json({ message: " student deleted successfully." });
   } catch (error) {
-      console.error("Error deleting  employee_id :", error);
-      return res.status(500).json({ error: "Failed to delete  employee_id ." });
+      console.error("Error deleting  student :", error);
+      return res.status(500).json({ error: "Failed to delete  student ." });
   }
   
 
