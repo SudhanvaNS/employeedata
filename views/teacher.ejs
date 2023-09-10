@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="teacher.css">
     <!-- <link rel="stylesheet" href="style.css"> -->
 
     <title>Emp Management</title>
@@ -28,12 +28,27 @@
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/employeedata/Templates/login.html">Logout</a>
+            <a class="nav-link" id ="logout" href="#">Logout</a>
           </li>
         </ul>
       </div>
     </nav>
-    
+    <form id="add-form" method="post" class="form-box">
+      <label for="USN">USN:</label>
+      <input type="text" id="USN" required>
+      <br>
+      <label for="Name">Name:</label>
+      <input type="text" id="Name" required>
+      <br>
+      <label for="PHONE">PHONE:</label>
+      <input type="text" id="PHONE" required>
+      <br>
+      <label for="Gender">Gender:</label>
+      <input type="text" id="Gender" required>
+      <br>
+      <button type="submit" class="add-button">Add Student</button>
+  </form>
+  <br>
 
     <h1 style="margin: 2% auto 2%;" class="text-center">Students List</h1>
     <div class="container">
@@ -41,7 +56,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-body">
-              <table class="table">
+              <table id="table">
                 <thead>
                   <tr>
                     <th>USN</th>
@@ -63,67 +78,86 @@
       </div>
     </div>
 
-    <script>  
-    document.addEventListener('DOMContentLoaded', function () {
-    const apiUrl = 'http://127.0.0.1:3000/student/getall/pavana143@gmail.comm';
+    <script src="\teacher.js">  
+//     document.addEventListener('DOMContentLoaded', function () {
+//       var Username = sessionStorage.getItem('Username');
+//     // console.log(id);
+//     const apiUrl = 'http://127.0.0.1:3000/student/getall/${Username}';
       
-    // function createDeleteButton() {
-    //     const deleteButton = document.createElement('button');
-    //     deleteButton.className = 'btn btn-danger';
-    //     deleteButton.textContent = 'Delete';
-    //     return deleteButton;
-    // }
+//     // function createDeleteButton() {
+//     //     const deleteButton = document.createElement('button');
+//     //     deleteButton.className = 'btn btn-danger';
+//     //     deleteButton.textContent = 'Delete';
+//     //     return deleteButton;
+//     // }
 
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            const tableBody = document.querySelector('tbody');
-            data.forEach(student => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${student.usn}</td>
-                    <td>${student.name}</td>
-                    <td>${student.phone}</td>
-                    <td>${student.gender}</td>
-                    <td>
-                        <button class="btn btn-primary">Edit</button>
-                        <button class="btn btn-danger delete-button">Delete</button>
-                    </td>
-                `;
+//     fetch(apiUrl)
+//         .then(response => response.json())
+//         .then(data =>  loadHTMLTable(data))
+//         .catch(error => {
+//             console.error("Error fetching data:", error);
+//         });
+//       });
 
-                const deleteButton = row.querySelector('.delete-button');
-                deleteButton.addEventListener('click', async () => {
-                    const confirmDelete = confirm('Are you sure you want to delete this student?');
-                    if (confirmDelete) {
-                        try {
-                            const response = await fetch(`http://localhost:3000/api/student/delete/${student.usn}`, {
-                                method: 'DELETE'
-                            });
 
-                            if (response.ok) {
-                                row.remove(); // Remove the deleted row from the table
-                            } else {
-                                console.error('Error deleting student:', response.statusText);
-                            }
-                        } catch (error) {
-                            console.log(error);
-                        }
-                    }
-                });
+//  function loadHTMLTable(data){
+//           const tableBody = document.querySelector('tbody');
+//           // console.log(data);
+//     const clothSize = data;
+//     if (clothSize.length === 0) {
+//         table.innerHTML = "<tr><td class='no-data' colspan='4'>No Data </td></tr>";
+//         return;
+//     }
+//             data.forEach(student => {
+//               const newRow = document.createElement("tr");
+//         newRow.className = "datarow";
+//         newRow.innerHTML = `
+//                     <td>${student.usn}</td>
+//                     <td>${student.name}</td>
+//                     <td>${student.phone}</td>
+//                     <td>${student.gender}</td>
+//                     <td>
+//                         <button class="btn btn-primary">Edit</button>
+//                         <button class="btn btn-danger delete-button">Delete</button>
+//                     </td>
+//                 `;
+//                 const deleteButton = row.querySelector('.delete--row-btn');
+//                 deleteButton.addEventListener('click', async () => {
+//                     const confirmDelete = confirm('Are you sure you want to delete this student?');
+//                     if (confirmDelete) {
+//                         try {
+//                           const ID = deleteButton.getAttribute("data-id");
+//                             const response = await fetch(`http://localhost:3000/api/student/delete/${student.usn}`, {
+//                                 method: 'DELETE'
+//                             });
 
-                tableBody.appendChild(row);
-            });
+//                             if (response.ok) {
+//                                 row.remove(); // Remove the deleted row from the table
+//                                 alert(data.message);
+//                                 location.reload();
+//                             } else {
+//                                 console.error('Error deleting student:', response.statusText);
+//                             }
+//                         } catch (error) {
+//                             console.log(error);
+//                         }
+//                     }
+//                 });
 
-            const addStudentRow = document.createElement('tr');
-            addStudentRow.innerHTML = `
-                <td colspan="5" class="text-center">
-                    <a href="addStudent.html" style="margin-top: 3%" class="btn btn-warning">Add Student</a>
-                </td>
-            `;
-            tableBody.appendChild(addStudentRow);
-        })
-        .catch(error => console.error('Error fetching data:', error));
-});
+//                 tableBody.appendChild(row);
+//             });
+//         }   
+
+            // const addStudentRow = document.createElement('tr');
+            // addStudentRow.innerHTML = `
+            //     <td colspan="5" class="text-center">
+            //         <a href="addStudent.html" style="margin-top: 3%" class="btn btn-warning">Add Student</a>
+            //     </td>
+            // `;
+//             tableBody.appendChild(addStudentRow);
+//         })
+//         .catch(error => console.error('Error fetching data:', error));
+// });
 
 
     </script>

@@ -48,43 +48,43 @@
         </div>
     </div>
 
-   <script>
+   <script src="/login.js">
     
-document.addEventListener("DOMContentLoaded", async () => {
-//   alert("hi my name is sudhanva");
-  const loginForm = document.getElementById("loginForm");
-  const emailerror=document.querySelector('.email.error');
-  const passworderror=document.querySelector('.password.error');
+// document.addEventListener("DOMContentLoaded", async () => {
+// //   alert("hi my name is sudhanva");
+//   const loginForm = document.getElementById("loginForm");
+//   const emailerror=document.querySelector('.email.error');
+//   const passworderror=document.querySelector('.password.error');
 
-  loginForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
+//   loginForm.addEventListener("submit", async (event) => {
+//     event.preventDefault();
    
-    const username = document.getElementById("loginUsername").value;
-    const password = document.getElementById("loginPassword").value;
-    const api='http://localhost:3000/'
-    try {
-      const response = await fetch(`/teacher/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ teacher_id: username, password: password }),
-      });
+//     const username = document.getElementById("loginUsername").value;
+//     const password = document.getElementById("loginPassword").value;
+//     const api='http://localhost:3000/'
+//     try {
+//       const response = await fetch(`/teacher/login`, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ teacher_id: username, password: password }),
+//       });
 
-      const responseData = await response.json();
+//       const responseData = await response.json();
 
-      if (response.ok) {        
+//       if (response.ok) {        
        
-        window.location.href = "teacher";
-      } else {
-        emailerror.textContent = response.error.error;
-      }
-    } catch (error) {
-      console.log(error);
-      // Handle other errors here if needed
-    }
-  });
-});
+//         window.location.href = "teacher";
+//       } else {
+//         emailerror.textContent = response.error.error;
+//       }
+//     } catch (error) {
+//       console.log(error);
+//       // Handle other errors here if needed
+//     }
+//   });
+// });
 
     </script>
 

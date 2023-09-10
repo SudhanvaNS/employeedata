@@ -87,4 +87,8 @@ exports.authenticateTeacher= async(req,res) => {
     });
   });
 }
-  
+exports.logout= async(req,res)=>{
+  res.clearCookie('jwt');
+      // res.render('login');
+    return res.status(201).json({message:"logged out successfully"});
+}

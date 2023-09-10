@@ -24,14 +24,14 @@ exports.createstudent = async (req, res) => {
   
     exports.getAllstudent = async (req, res) => {
       const {teacher_id}=req.params;
-      console.log(req.params);
+      // console.log(req.params);
       const query = "SELECT * FROM students where teacher_id = ?";
    
       pool.query(query,[teacher_id],(error,results,fields)=>{
         if(error)
         {console.error("error: ",error);}
         else{
-          console.log("RESULTS: ",results);
+          // console.log("RESULTS: ",results);
               return res.status(200).json(results);
   
         }

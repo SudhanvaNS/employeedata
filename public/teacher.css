@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #fe4f51;
+    color: #333;
+  }
+  
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+    color: #f9f9f9;
+    margin-bottom: 20px;
+  }
+  
+  form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  #add-form{
+    margin: 10px;
+  }
+  form input[type="number"],
+  form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  .add-button,
+  .update-button,
+  .delete-row-btn,
+  .edit-row-btn {
+    cursor: pointer;
+    background-color: #fe4f51;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .add-button:hover,
+  .update-button:hover,
+  .delete-row-btn:hover,
+  .edit-row-btn:hover {
+    background-color: #fe4f51;
+    transform: scale(1.1);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  th,
+  td {
+    padding: 12px 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: #fe4f51;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #FF7E82;
+  }
+  
+  td:hover {
+    color: white;
+  }
+  
+  section {
+    margin-top: 20px;
+  }
+  
+  .form-box,
+  .table-box,
+  .update-section {
+    color: #fe4f51;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: white;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
