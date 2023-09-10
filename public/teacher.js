@@ -57,26 +57,30 @@ function loadHTMLTable(data) {
 const formel = document.querySelector('#add-form')
 formel.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const size_id = document.getElementById('size-id').value;
-    const description = document.getElementById('description').value;
-    createClothSize(size_id, description);
+    const USN = document.getElementById('USN').value;
+    const Name = document.getElementById('Name').value;
+    const PHONE = document.getElementById('PHONE').value;
+    const Gender = document.getElementById('Gender').value;
+    createClothSize(USN, Name,PHONE,Gender,Username);
     
-    document.getElementById('size-id').value = ""
-    document.getElementById('description').value = ""
+    document.getElementById('USN').value = ""
+    document.getElementById('Name').value = ""
+    document.getElementById('PHONE').value = ""
+    document.getElementById('Gender').value = ""
 
 });
 
 const apiUrl = "http://localhost:3000/";
-async function createClothSize(size_id, description) {
+async function createClothSize(usn, name,phone,gender,teacher_id) {
     try {
-        const response = await fetch(`${apiUrl}/student/`, {
+        const response = await fetch(`${apiUrl}student/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ size_id, description }),
+            body: JSON.stringify({ usn,name,phone,gender,teacher_id }),
         })
-        console.log(response)
+        // console.log(response.json())
         if (response.ok) {
             location.reload()
         } else {
