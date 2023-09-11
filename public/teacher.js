@@ -12,10 +12,11 @@ const logoutbtn=document.getElementById("logout");
 logoutbtn.addEventListener("click", ()=>{
     fetch(`http://localhost:3000/teacher/logout`)
     .then(response=>response.json())
-    .then(window.location.href = 'teacher')
+    .then(location.reload())
     .catch(error=>{
         console.error("error logging out",error);
     });
+    location.reload
 })
 var Username = sessionStorage.getItem('Username');
 
